@@ -244,7 +244,34 @@ class WhatsappCloud {
 
         return response;
     }
+    async sendReply({ message, recipientPhone,replyTo }) {
+        // to do: context is not working
 
+        this._mustHaverecipientPhone(recipientPhone);
+        this._mustHaveMessage(message);
+        let body = {
+            messaging_product: 'whatsapp',
+            context: {
+                message_id: replyTo
+            },
+            to: recipientPhone,
+            type: 'text',
+            text: {
+                preview_url: false,
+                body: message,
+            },
+        };
+
+        let response = await this._fetchAssistant({
+            url: '/messages',
+            method: 'POST',
+            body,
+        });
+
+        return response;
+    }
+
+   
     async markMessageAsRead({ message_id }) {
         try {
             this._mustHaveMessageId(message_id);
