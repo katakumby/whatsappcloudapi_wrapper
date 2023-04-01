@@ -222,8 +222,6 @@ class WhatsappCloud {
         return response;
     }
     async sendText({ message, recipientPhone }) {
-        // to do: context is not working
-
         this._mustHaverecipientPhone(recipientPhone);
         this._mustHaveMessage(message);
         let body = {
@@ -245,8 +243,6 @@ class WhatsappCloud {
         return response;
     }
     async sendReply({ message, recipientPhone,replyTo }) {
-        // to do: context is not working
-
         this._mustHaverecipientPhone(recipientPhone);
         this._mustHaveMessage(message);
         let body = {
@@ -270,7 +266,14 @@ class WhatsappCloud {
 
         return response;
     }
+    async getMediaURL({ media_id }) {
+    
 
+        const media = await this._retrieveMediaUrl({recipientPhone});
+
+
+        return media.url;
+    }
    
     async markMessageAsRead({ message_id }) {
         try {
