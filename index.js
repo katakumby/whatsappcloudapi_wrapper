@@ -269,7 +269,7 @@ class WhatsappCloud {
     async getMediaURL({ media_id }) {
     
 
-        const media = await this._retrieveMediaUrl({recipientPhone});
+        const media = await this._retrieveMediaUrl({media_id});
 
 
         return media.url;
