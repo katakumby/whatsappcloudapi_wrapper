@@ -26,9 +26,9 @@ class WhatsappCloud {
         }
 
         if (graphAPIVersion) {
-            signale.warn(
-                `Please note, the default "graphAPIVersion" is v13.0. You are using ${graphAPIVersion}. This may result in quirky behavior.`
-            );
+            // signale.warn(
+            //     `Please note, the default "graphAPIVersion" is v13.0. You are using ${graphAPIVersion}. This may result in quirky behavior.`
+            // );
         }
 
         this._fetchAssistant = ({ baseUrl, url, method, headers, body }) => {
@@ -274,7 +274,7 @@ class WhatsappCloud {
 
         return media.url;
     }
-   
+    
     async markMessageAsRead({ message_id }) {
         try {
             this._mustHaveMessageId(message_id);
